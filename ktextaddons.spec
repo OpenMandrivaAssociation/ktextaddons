@@ -23,6 +23,11 @@ BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	cmake(Qt5Keychain)
+BuildRequires:	cmake(KF5I18n)
+BuildRequires:	cmake(KF5ConfigWidgets)
+BuildRequires:	cmake(KF5Archive)
+BuildRequires:	cmake(KF5XmlGui)
+BuildRequires:	cmake(KF5CoreAddons)
 # For QCH format docs
 BuildRequires:	doxygen
 BuildRequires:	qt5-assistant
