@@ -2,6 +2,8 @@
 %define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 
 %define libtextautocorrection %{mklibname KF5TextAutoCorrection}
+%define libtextautocorrectioncore %{mklibname KF5TextAutoCorrectionCore}
+%define libtextautocorrectionwidgets %{mklibname KF5TextAutoCorrectionWidgets}
 %define libtextedittexttospeech %{mklibname KF5TextEditTextToSpeech}
 %define libtextgrammarcheck %{mklibname KF5TextGrammarCheck}
 %define libtexttranslator %{mklibname KF5TextTranslator}
@@ -9,6 +11,8 @@
 %define libtextemoticonswidgets %{mklibname KF5TextEmoticonsWidgets}
 %define libtextaddonswidgets %{mklibname KF5TextAddonsWidgets}
 %define devtextautocorrection %{mklibname -d KF5TextAutoCorrection}
+%define devtextautocorrectioncore %{mklibname -d KF5TextAutoCorrectionCore}
+%define devtextautocorrectionwidgets %{mklibname -d KF5TextAutoCorrectionWidgets}
 %define devtextedittexttospeech %{mklibname -d KF5TextEditTextToSpeech}
 %define devtextgrammarcheck %{mklibname -d KF5TextGrammarCheck}
 %define devtexttranslator %{mklibname -d KF5TextTranslator}
@@ -17,7 +21,7 @@
 %define devtextaddonswidgets %{mklibname -d KF5TextAddonsWidgets}
 
 Name:		ktextaddons
-Version:	1.2
+Version:	1.3
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/%{version}/ktextaddons-%{version}.tar.bz2
@@ -40,7 +44,8 @@ BuildRequires:	cmake(Qt5UiPlugin)
 # For QCH format docs
 BuildRequires:	doxygen
 BuildRequires:	qt5-assistant
-Requires:	%{libtextautocorrection} = %{EVRD}
+Requires:	%{libtextautocorrectioncore} = %{EVRD}
+Requires:	%{libtextautocorrectionwidgets} = %{EVRD}
 Requires:	%{libtextedittexttospeech} = %{EVRD}
 Requires:	%{libtextgrammarcheck} = %{EVRD}
 Requires:	%{libtexttranslator} = %{EVRD}
@@ -52,20 +57,38 @@ Requires:	%{libtextaddonswidgets} = %{EVRD}
 KDE library dealing with text (autocorrection, TTS, grammar checking,
 translation, etc.)
 
-%package -n %{libtextautocorrection}
-Summary: KDE library for text autocorrection
+%package -n %{libtextautocorrectioncore}
+Summary: KDE library for text autocorrection (non-GUI)
 Group: System/Libraries
+Obsoletes: %{libtextautocorrection} < %{EVRD}
 
-%description -n %{libtextautocorrection}
-KDE library for text autocorrection
+%description -n %{libtextautocorrectioncore}
+KDE library for text autocorrection (non-GUI)
 
-%package -n %{devtextautocorrection}
-Summary: Development files for the KDE Text Autocorrection library
+%package -n %{devtextautocorrectioncore}
+Summary: Development files for the KDE Text Autocorrection library (non-GUI)
 Group: Development/C++
-Requires: %{libtextautocorrection} = %{EVRD}
+Requires: %{libtextautocorrectioncore} = %{EVRD}
 
-%description -n %{devtextautocorrection}
-Development files for the KDE Text Autocorrection library
+%description -n %{devtextautocorrectioncore}
+Development files for the KDE Text Autocorrection library (non-GUI)
+
+%package -n %{libtextautocorrectionwidgets}
+Summary: KDE library for text autocorrection (GUI)
+Group: System/Libraries
+Requires: %{libtextautocorrectioncore} = %{EVRD}
+Obsoletes: %{devtextautocorrection} < %{EVRD}
+
+%description -n %{libtextautocorrectionwidgets}
+KDE library for text autocorrection (GUI)
+
+%package -n %{devtextautocorrectionwidgets}
+Summary: Development files for the KDE Text Autocorrection library (GUI)
+Group: Development/C++
+Requires: %{libtextautocorrectionwidgets} = %{EVRD}
+
+%description -n %{devtextautocorrectionwidgets}
+Development files for the KDE Text Autocorrection library (GUI)
 
 %package -n %{libtextedittexttospeech}
 Summary: KDE library for Text-To-Speech processing
@@ -160,7 +183,8 @@ Development files for the KDE Text Addon Widgets
 %package -n %{name}-devel-docs
 Summary: Developer documentation for %{name} for use with Qt Assistant
 Group: Documentation
-Suggests: %{devtextautocorrection} = %{EVRD}
+Suggests: %{devtextautocorrectioncore} = %{EVRD}
+Suggests: %{devtextautocorrectionwidgets} = %{EVRD}
 Suggests: %{devtextedittexttospeech} = %{EVRD}
 Suggests: %{devtextgrammarcheck} = %{EVRD}
 Suggests: %{devtexttranslator} = %{EVRD}
@@ -188,14 +212,23 @@ Developer documentation for %{name} for use with Qt Assistant
 %find_lang libtexttranslator
 %find_lang libtextgrammarcheck
 
-%files -n %{libtextautocorrection} -f libtextautocorrection.lang
-%{_libdir}/libKF5TextAutoCorrection.so.%{major}*
+%files -n %{libtextautocorrectioncore}
+%{_libdir}/libKF5TextAutoCorrectionCore.so.%{major}*
 
-%files -n %{devtextautocorrection}
-%{_libdir}/libKF5TextAutoCorrection.so
-%{_libdir}/cmake/KF5TextAutoCorrection
-%{_libdir}/qt5/mkspecs/modules/qt_TextAutoCorrection.pri
-%{_includedir}/KF5/TextAutoCorrection
+%files -n %{devtextautocorrectioncore}
+%{_libdir}/libKF5TextAutoCorrectionCore.so
+%{_libdir}/cmake/KF5TextAutoCorrectionCore
+%{_libdir}/qt5/mkspecs/modules/qt_TextAutoCorrectionCore.pri
+%{_includedir}/KF5/TextAutoCorrectionCore
+
+%files -n %{libtextautocorrectionwidgets} -f libtextautocorrection.lang
+%{_libdir}/libKF5TextAutoCorrectionWidgets.so.%{major}*
+
+%files -n %{devtextautocorrectionwidgets}
+%{_libdir}/libKF5TextAutoCorrectionWidgets.so
+%{_libdir}/cmake/KF5TextAutoCorrectionWidgets
+%{_libdir}/qt5/mkspecs/modules/qt_TextAutoCorrectionWidgets.pri
+%{_includedir}/KF5/TextAutoCorrectionWidgets
 
 %files -n %{libtextedittexttospeech} -f libtextedittexttospeech.lang
 %{_libdir}/libKF5TextEditTextToSpeech.so.%{major}*
