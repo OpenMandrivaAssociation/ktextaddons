@@ -196,7 +196,7 @@ Suggests: %{devtextaddonswidgets} = %{EVRD}
 Developer documentation for %{name} for use with Qt Assistant
 
 %prep
-%autosetup -p1
+%autosetup -n %{name}-v%{version} -p1
 %cmake_kde5
 
 %build
