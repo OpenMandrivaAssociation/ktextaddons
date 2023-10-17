@@ -21,7 +21,7 @@
 %define devtextaddonswidgets %{mklibname -d KF5TextAddonsWidgets}
 
 Name:		ktextaddons
-Version:	1.3.2
+Version:	1.5.2
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/%{version}/ktextaddons-v%{version}.tar.bz2
