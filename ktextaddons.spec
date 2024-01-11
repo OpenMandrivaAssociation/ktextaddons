@@ -55,10 +55,10 @@
 %bcond_without qt6
 
 Name:		ktextaddons
-Version:	1.5.2
-Release:	2
+Version:	1.5.3
+Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
-Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/%{version}/ktextaddons-v%{version}.tar.bz2
+Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
 Summary:	KDE library dealing with text (autocorrection, TTS, grammar, translation, etc.)
 URL:		https://invent.kde.org/libraries/ktextaddons
 License:	LGPL v2.1
@@ -515,7 +515,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextautocorrectioncore}
 %{_libdir}/libKF5TextAutoCorrectionCore.so
 %{_libdir}/cmake/KF5TextAutoCorrectionCore
-%{_libdir}/qt5/mkspecs/modules/qt_TextAutoCorrectionCore.pri
 %{_includedir}/KF5/TextAutoCorrectionCore
 
 %files -n %{libtextautocorrectionwidgets} -f libtextautocorrection.lang
@@ -524,7 +523,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextautocorrectionwidgets}
 %{_libdir}/libKF5TextAutoCorrectionWidgets.so
 %{_libdir}/cmake/KF5TextAutoCorrectionWidgets
-%{_libdir}/qt5/mkspecs/modules/qt_TextAutoCorrectionWidgets.pri
 %{_includedir}/KF5/TextAutoCorrectionWidgets
 
 %files -n %{libtextedittexttospeech} -f libtextedittexttospeech.lang
@@ -533,7 +531,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextedittexttospeech}
 %{_libdir}/libKF5TextEditTextToSpeech.so
 %{_libdir}/cmake/KF5TextEditTextToSpeech
-%{_libdir}/qt5/mkspecs/modules/qt_TextEditTextToSpeech.pri
 %{_includedir}/KF5/TextEditTextToSpeech
 
 %files -n %{libtextgrammarcheck} -f libtextgrammarcheck.lang
@@ -542,7 +539,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextgrammarcheck}
 %{_libdir}/libKF5TextGrammarCheck.so
 %{_libdir}/cmake/KF5TextGrammarCheck
-%{_libdir}/qt5/mkspecs/modules/qt_TextGrammarCheck.pri
 %{_includedir}/KF5/TextGrammarCheck
 
 %files -n %{libtexttranslator} -f libtexttranslator.lang
@@ -556,7 +552,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtexttranslator}
 %{_libdir}/libKF5TextTranslator.so
 %{_libdir}/cmake/KF5TextTranslator
-%{_libdir}/qt5/mkspecs/modules/qt_TextTranslator.pri
 %{_includedir}/KF5/TextTranslator
 
 %files -n %{libtextaddonswidgets} -f libtextaddonswidgets.lang
@@ -567,7 +562,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextaddonswidgets}
 %{_includedir}/KF5/TextAddonsWidgets
 %{_libdir}/cmake/KF5TextAddonsWidgets
-%{_libdir}/qt5/mkspecs/modules/qt_textaddonswidgets.pri
 
 %files -n %{libtextemoticons} -f libtextemoticons.lang
 %{_libdir}/libKF5TextEmoticonsCore.so*
@@ -575,7 +569,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextemoticons}
 %{_includedir}/KF5/TextEmoticonsCore
 %{_libdir}/cmake/KF5TextEmoticonsCore
-%{_libdir}/qt5/mkspecs/modules/qt_textemoticonscore.pri
 
 %files -n %{libtextemoticonswidgets}
 %{_libdir}/libKF5TextEmoticonsWidgets.so*
@@ -583,7 +576,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextemoticonswidgets}
 %{_includedir}/KF5/TextEmoticonsWidgets
 %{_libdir}/cmake/KF5TextEmoticonsWidgets
-%{_libdir}/qt5/mkspecs/modules/qt_textemoticonswidgets.pri
 
 %files -n %{libtextcustomeditor} -f libtextcustomeditor.lang
 %{_libdir}/libKF5TextCustomEditor.so*
@@ -594,7 +586,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextcustomeditor}
 %{_includedir}/KF5/TextCustomEditor
 %{_libdir}/cmake/KF5TextCustomEditor
-%{_libdir}/qt5/mkspecs/modules/qt_textcustomeditor.pri
 
 %files -n %{libtextutils}
 %{_libdir}/libKF5TextUtils.so*
@@ -602,7 +593,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{devtextutils}
 %{_includedir}/KF5/TextUtils
 %{_libdir}/cmake/KF5TextUtils
-%{_libdir}/qt5/mkspecs/modules/qt_textutils.pri
 %endif
 
 %if %{with qt6}
@@ -613,7 +603,6 @@ export CMAKE_BUILD_DIR=build6
 %{_libdir}/libKF6TextAutoCorrectionCore.so
 %{_libdir}/cmake/KF6TextAutoCorrectionCore
 %{_includedir}/KF6/TextAutoCorrectionCore
-%{_qtdir}/mkspecs/modules/qt_TextAutoCorrectionCore.pri
 
 %files -n %{lib6textautocorrectionwidgets} -f libtextautocorrection.lang
 %{_libdir}/libKF6TextAutoCorrectionWidgets.so.%{major}*
@@ -622,7 +611,6 @@ export CMAKE_BUILD_DIR=build6
 %{_libdir}/libKF6TextAutoCorrectionWidgets.so
 %{_libdir}/cmake/KF6TextAutoCorrectionWidgets
 %{_includedir}/KF6/TextAutoCorrectionWidgets
-%{_qtdir}/mkspecs/modules/qt_TextAutoCorrectionWidgets.pri
 
 %files -n %{lib6textedittexttospeech} -f libtextedittexttospeech.lang
 %{_libdir}/libKF6TextEditTextToSpeech.so.%{major}*
@@ -631,7 +619,6 @@ export CMAKE_BUILD_DIR=build6
 %{_libdir}/libKF6TextEditTextToSpeech.so
 %{_libdir}/cmake/KF6TextEditTextToSpeech
 %{_includedir}/KF6/TextEditTextToSpeech
-%{_qtdir}/mkspecs/modules/qt_TextEditTextToSpeech.pri
 
 %files -n %{lib6textgrammarcheck} -f libtextgrammarcheck.lang
 %{_libdir}/libKF6TextGrammarCheck.so.%{major}*
@@ -640,7 +627,6 @@ export CMAKE_BUILD_DIR=build6
 %{_libdir}/libKF6TextGrammarCheck.so
 %{_libdir}/cmake/KF6TextGrammarCheck
 %{_includedir}/KF6/TextGrammarCheck
-%{_qtdir}/mkspecs/modules/qt_TextGrammarCheck.pri
 
 %files -n %{lib6texttranslator} -f libtexttranslator.lang
 %{_libdir}/libKF6TextTranslator.so.%{major}*
@@ -654,7 +640,6 @@ export CMAKE_BUILD_DIR=build6
 %{_libdir}/libKF6TextTranslator.so
 %{_libdir}/cmake/KF6TextTranslator
 %{_includedir}/KF6/TextTranslator
-%{_qtdir}/mkspecs/modules/qt_TextTranslator.pri
 
 %files -n %{lib6textaddonswidgets} -f libtextaddonswidgets.lang
 %{_libdir}/libKF6TextAddonsWidgets.so*
@@ -664,7 +649,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{dev6textaddonswidgets}
 %{_includedir}/KF6/TextAddonsWidgets
 %{_libdir}/cmake/KF6TextAddonsWidgets
-%{_qtdir}/mkspecs/modules/qt_textaddonswidgets.pri
 
 %files -n %{lib6textemoticons} -f libtextemoticons.lang
 %{_libdir}/libKF6TextEmoticonsCore.so*
@@ -672,7 +656,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{dev6textemoticons}
 %{_includedir}/KF6/TextEmoticonsCore
 %{_libdir}/cmake/KF6TextEmoticonsCore
-%{_qtdir}/mkspecs/modules/qt_textemoticonscore.pri
 
 %files -n %{lib6textemoticonswidgets}
 %{_libdir}/libKF6TextEmoticonsWidgets.so*
@@ -680,7 +663,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{dev6textemoticonswidgets}
 %{_includedir}/KF6/TextEmoticonsWidgets
 %{_libdir}/cmake/KF6TextEmoticonsWidgets
-%{_qtdir}/mkspecs/modules/qt_textemoticonswidgets.pri
 
 %files -n %{lib6textcustomeditor} -f libtextcustomeditor.lang
 %{_libdir}/libKF6TextCustomEditor.so*
@@ -691,7 +673,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{dev6textcustomeditor}
 %{_includedir}/KF6/TextCustomEditor
 %{_libdir}/cmake/KF6TextCustomEditor
-%{_libdir}/qt6/mkspecs/modules/qt_textcustomeditor.pri
 
 %files -n %{lib6textutils}
 %{_libdir}/libKF6TextUtils.so*
@@ -699,7 +680,6 @@ export CMAKE_BUILD_DIR=build6
 %files -n %{dev6textutils}
 %{_includedir}/KF6/TextUtils
 %{_libdir}/cmake/KF6TextUtils
-%{_libdir}/qt6/mkspecs/modules/qt_textutils.pri
 %endif
 
 %files -n %{name}-devel-docs
