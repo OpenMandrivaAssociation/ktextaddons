@@ -55,7 +55,7 @@
 %bcond_without qt6
 
 Name:		ktextaddons
-Version:	1.5.3
+Version:	1.5.4
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
