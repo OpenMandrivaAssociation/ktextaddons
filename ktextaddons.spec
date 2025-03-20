@@ -56,7 +56,7 @@
 
 Name:		ktextaddons
 Version:	1.5.4
-Release:	5
+Release:	6
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
 Summary:	KDE library dealing with text (autocorrection, TTS, grammar, translation, etc.)
@@ -112,6 +112,9 @@ Requires:	%{libtexttranslator} = %{EVRD}
 Requires:	%{libtextemoticons} = %{EVRD}
 Requires:	%{libtextemoticonswidgets} = %{EVRD}
 Requires:	%{libtextaddonswidgets} = %{EVRD}
+
+%patchlist
+ktextaddons-1.5.4-qt-6.9.patch
 
 %description
 KDE library dealing with text (autocorrection, TTS, grammar checking,
