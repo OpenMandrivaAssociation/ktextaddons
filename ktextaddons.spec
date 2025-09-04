@@ -82,6 +82,7 @@ BuildRequires:	cmake(KF6Archive)
 BuildRequires:	cmake(KF6XmlGui)
 BuildRequires:	cmake(KF6CoreAddons)
 BuildRequires:  cmake(KF6SyntaxHighlighting)
+BuildRequires:	cmake(KF6TextWidgets)
 BuildRequires:	cmake(Qt6UiPlugin)
 # For QCH format docs
 BuildRequires:	doxygen
