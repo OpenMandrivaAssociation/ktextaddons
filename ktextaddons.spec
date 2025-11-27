@@ -57,7 +57,7 @@
 
 Name:		ktextaddons
 Version:	1.7.1
-Release:	1
+Release:	2
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
 Summary:	KDE library dealing with text (autocorrection, TTS, grammar, translation, etc.)
