@@ -56,8 +56,8 @@
 %define devtextspeechtotext %{mklibname -d KF6TextSpeechToText}
 
 Name:		ktextaddons
-Version:	1.7.1
-Release:	2
+Version:	1.8.0
+Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
 Summary:	KDE library dealing with text (autocorrection, TTS, grammar, translation, etc.)
@@ -474,6 +474,9 @@ Development files for the KDE speech-to-text library
 %dir %{_qtdir}/plugins/kf6/textautogeneratetext
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_genericnetwork.so
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollama.so
+%dir %{_qtdir}/plugins/autogeneratetext
+%dir %{_qtdir}/plugins/autogeneratetext/toolplugins
+%{_qtdir}/plugins/autogeneratetext/toolplugins/textautogeneratetext_exampletoolplugin.so
 
 %files -n %{devtextautogeneratetext}
 %{_libdir}/libKF6TextAutoGenerateText.so
