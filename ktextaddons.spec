@@ -56,7 +56,7 @@
 %define devtextspeechtotext %{mklibname -d KF6TextSpeechToText}
 
 Name:		ktextaddons
-Version:	1.8.0
+Version:	2.0.1
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
@@ -383,6 +383,7 @@ Development files for the KDE speech-to-text library
 
 %files -n %{libtextautocorrectioncore}
 %{_libdir}/libKF6TextAutoCorrectionCore.so.%{major}*
+%{_libdir}/libKF6TextAutoCorrectionCore.so.%{version}
 
 %files -n %{devtextautocorrectioncore}
 %{_libdir}/libKF6TextAutoCorrectionCore.so
@@ -391,6 +392,7 @@ Development files for the KDE speech-to-text library
 
 %files -n %{libtextautocorrectionwidgets} -f libtextautocorrection.lang
 %{_libdir}/libKF6TextAutoCorrectionWidgets.so.%{major}*
+%{_libdir}/libKF6TextAutoCorrectionWidgets.so.%{version}
 
 %files -n %{devtextautocorrectionwidgets}
 %{_libdir}/libKF6TextAutoCorrectionWidgets.so
@@ -407,6 +409,7 @@ Development files for the KDE speech-to-text library
 
 %files -n %{libtextgrammarcheck} -f libtextgrammarcheck.lang
 %{_libdir}/libKF6TextGrammarCheck.so.%{major}*
+%{_libdir}/libKF6TextGrammarCheck.so.%{version}
 
 %files -n %{devtextgrammarcheck}
 %{_libdir}/libKF6TextGrammarCheck.so
@@ -415,6 +418,7 @@ Development files for the KDE speech-to-text library
 
 %files -n %{libtexttranslator} -f libtexttranslator.lang
 %{_libdir}/libKF6TextTranslator.so.%{major}*
+%{_libdir}/libKF6TextTranslator.so.%{version}
 %dir %{_libdir}/qt6/plugins/kf6/translator
 %{_libdir}/qt6/plugins/kf6/translator/translator_*.so
 
@@ -468,29 +472,39 @@ Development files for the KDE speech-to-text library
 
 %files -n %{libtextautogeneratetext} -f libtextautogeneratetext.lang
 %{_libdir}/libKF6TextAutoGenerateText.so.%{major}*
-%{_libdir}/libtextautogenerate-cmark-rc-copy.so*
+%{_libdir}/libKF6TextAutoGenerateText.so.%{version}
 %{_libdir}/libtextautogenerategenericnetwork.so*
 %{_libdir}/libtextautogenerateollama.so*
+%{_libdir}/libtextautogenerateollamacloud.so*
+%{_libdir}/libtextautogenerateollamacommon.so*
+%{_libdir}/libtextautogenerateollamaonline.so*
 %dir %{_qtdir}/plugins/kf6/textautogeneratetext
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_genericnetwork.so
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollama.so
+%{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollamacloud.so
+%{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollamaonline.so
 %dir %{_qtdir}/plugins/autogeneratetext
 %dir %{_qtdir}/plugins/autogeneratetext/toolplugins
 %{_qtdir}/plugins/autogeneratetext/toolplugins/textautogeneratetext_exampletoolplugin.so
+%{_libdir}/libtextutils-cmark-rc-copy.so*
 
 %files -n %{devtextautogeneratetext}
 %{_libdir}/libKF6TextAutoGenerateText.so
 %{_libdir}/cmake/KF6TextAutoGenerateText
 %{_includedir}/KF6/TextAutoGenerateText
-%{_libdir}/cmake/textautogenerate-cmark-rc-copy
+%{_libdir}/cmake/textutils-cmark-rc-copy
 
 %files -n %{libtextspeechtotext} -f libtextspeechtotext.lang
 %{_libdir}/libKF6TextSpeechToText.so.%{major}*
+%{_libdir}/libKF6TextSpeechToText.so.%{version}
+%{_libdir}/libKF6TextEditTextToSpeech.so.%{major}*
+%{_libdir}/libKF6TextEditTextToSpeech.so.%{version}
 %dir %{_qtdir}/plugins/kf6/speechtotext
 %{_qtdir}/plugins/kf6/speechtotext/speechtotext_google.so
 %{_qtdir}/plugins/kf6/speechtotext/speechtotext_whisper.so
 
 %files -n %{devtextspeechtotext}
 %{_libdir}/libKF6TextSpeechToText.so
+%{_libdir}/libKF6TextEditTextToSpeech.so
 %{_libdir}/cmake/KF6TextSpeechToText
 %{_includedir}/KF6/TextSpeechToText
