@@ -56,7 +56,7 @@
 %define devtextspeechtotext %{mklibname -d KF6TextSpeechToText}
 
 Name:		ktextaddons
-Version:	2.0.1
+Version:	2.1.1
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
