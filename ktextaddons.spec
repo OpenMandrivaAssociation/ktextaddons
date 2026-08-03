@@ -41,6 +41,8 @@
 %define libtextutils %{mklibname KF6TextUtils}
 %define libtextautogeneratetext %{mklibname KF6TextAutoGenerateText}
 %define libtextspeechtotext %{mklibname KF6TextSpeechToText}
+%define libtextautogeneratetextmcpprotocolcore %{mklibname KF6TextAutoGenerateTextMcpProtocolCore}
+%define libtextautogeneratetextmcpprotocolwidgets %{mklibname KF6TextAutoGenerateTextMcpProtocolWidgets}
 %define devtextautocorrection %{mklibname -d KF6TextAutoCorrection}
 %define devtextautocorrectioncore %{mklibname -d KF6TextAutoCorrectionCore}
 %define devtextautocorrectionwidgets %{mklibname -d KF6TextAutoCorrectionWidgets}
@@ -54,9 +56,11 @@
 %define devtextutils %{mklibname -d KF6TextUtils}
 %define devtextautogeneratetext %{mklibname -d KF6TextAutoGenerateText}
 %define devtextspeechtotext %{mklibname -d KF6TextSpeechToText}
+%define devtextautogeneratetextmcpprotocolcore %{mklibname -d KF6TextAutoGenerateTextMcpProtocolCore}
+%define devtextautogeneratetextmcpprotocolwidgets %{mklibname -d KF6TextAutoGenerateTextMcpProtocolWidgets}
 
 Name:		ktextaddons
-Version:	2.1.1
+Version:	2.1.2
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
@@ -66,25 +70,37 @@ License:	LGPL v2.1
 Group:		System/Libraries
 BuildRequires:	cmake(ECM)
 
+# Qt (REQUIRED components from top-level CMakeLists.txt)
 BuildRequires:	cmake(Qt6)
 BuildRequires:	cmake(Qt6Core)
-BuildRequires:	cmake(Qt6Designer)
 BuildRequires:	cmake(Qt6Widgets)
-BuildRequires:	cmake(Qt6MultimediaWidgets)
+BuildRequires:	cmake(Qt6Network)
+BuildRequires:	cmake(Qt6Xml)
 BuildRequires:	cmake(Qt6Sql)
+BuildRequires:	cmake(Qt6DBus)
 BuildRequires:	cmake(Qt6Test)
-BuildRequires:	cmake(Qt6TextToSpeech)
 BuildRequires:	cmake(Qt6Keychain)
-BuildRequires:	cmake(KF6Sonnet)
-BuildRequires:  cmake(KF6KIO)
-BuildRequires:	cmake(KF6I18n)
-BuildRequires:	cmake(KF6ConfigWidgets)
-BuildRequires:	cmake(KF6Archive)
-BuildRequires:	cmake(KF6XmlGui)
-BuildRequires:	cmake(KF6CoreAddons)
-BuildRequires:  cmake(KF6SyntaxHighlighting)
-BuildRequires:	cmake(KF6TextWidgets)
+# Optional/feature components
+BuildRequires:	cmake(Qt6TextToSpeech)
+BuildRequires:	cmake(Qt6MultimediaWidgets)
+BuildRequires:	cmake(Qt6Designer)
 BuildRequires:	cmake(Qt6UiPlugin)
+
+# KF6 (REQUIRED components from top-level CMakeLists.txt)
+BuildRequires:	cmake(KF6I18n)
+BuildRequires:	cmake(KF6ColorScheme)
+BuildRequires:	cmake(KF6Archive)
+BuildRequires:	cmake(KF6CoreAddons)
+BuildRequires:	cmake(KF6Sonnet)
+BuildRequires:	cmake(KF6Service)
+BuildRequires:	cmake(KF6SyntaxHighlighting)
+BuildRequires:	cmake(KF6WidgetsAddons)
+BuildRequires:	cmake(KF6TextWidgets)
+BuildRequires:	cmake(KF6ItemViews)
+BuildRequires:	cmake(KF6IconThemes)
+BuildRequires:	cmake(KF6KIO)
+# Linked by libraries (ConfigCore/ConfigGui)
+BuildRequires:	cmake(KF6Config)
 # For QCH format docs
 BuildRequires:	doxygen
 Requires:	%{libtextautocorrectioncore} = %{EVRD}
@@ -98,6 +114,8 @@ Requires:	%{libtextutils} = %{EVRD}
 Requires:	%{libtextaddonswidgets} = %{EVRD}
 Requires:	%{libtextautogeneratetext} = %{EVRD}
 Requires:	%{libtextspeechtotext} = %{EVRD}
+Requires:	%{libtextautogeneratetextmcpprotocolcore} = %{EVRD}
+Requires:	%{libtextautogeneratetextmcpprotocolwidgets} = %{EVRD}
 BuildSystem:	cmake
 BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
@@ -369,6 +387,37 @@ Requires: %{libtextspeechtotext} = %{EVRD}
 %description -n %{devtextspeechtotext}
 Development files for the KDE speech-to-text library
 
+%package -n %{libtextautogeneratetextmcpprotocolcore}
+Summary: KDE MCP protocol core library for text auto-generation
+Group: System/Libraries
+
+%description -n %{libtextautogeneratetextmcpprotocolcore}
+KDE MCP (Model Context Protocol) core library for text auto-generation
+
+%package -n %{devtextautogeneratetextmcpprotocolcore}
+Summary: Development files for the KDE MCP protocol core library
+Group: Development/C++
+Requires: %{libtextautogeneratetextmcpprotocolcore} = %{EVRD}
+
+%description -n %{devtextautogeneratetextmcpprotocolcore}
+Development files for the KDE MCP protocol core library
+
+%package -n %{libtextautogeneratetextmcpprotocolwidgets}
+Summary: KDE MCP protocol widgets for text auto-generation
+Group: System/Libraries
+Requires: %{libtextautogeneratetextmcpprotocolcore} = %{EVRD}
+
+%description -n %{libtextautogeneratetextmcpprotocolwidgets}
+KDE MCP (Model Context Protocol) widgets for text auto-generation
+
+%package -n %{devtextautogeneratetextmcpprotocolwidgets}
+Summary: Development files for the KDE MCP protocol widgets
+Group: Development/C++
+Requires: %{libtextautogeneratetextmcpprotocolwidgets} = %{EVRD}
+
+%description -n %{devtextautogeneratetextmcpprotocolwidgets}
+Development files for the KDE MCP protocol widgets
+
 %install -a
 %find_lang libtextautocorrection
 %find_lang libtextedittexttospeech
@@ -380,6 +429,7 @@ Development files for the KDE speech-to-text library
 %find_lang libtextaddonswidgets
 %find_lang libtextautogeneratetext
 %find_lang libtextspeechtotext
+%find_lang libtextautogeneratetextmcpprotocol
 
 %files -n %{libtextautocorrectioncore}
 %{_libdir}/libKF6TextAutoCorrectionCore.so.%{major}*
@@ -478,15 +528,26 @@ Development files for the KDE speech-to-text library
 %{_libdir}/libtextautogenerateollamacloud.so*
 %{_libdir}/libtextautogenerateollamacommon.so*
 %{_libdir}/libtextautogenerateollamaonline.so*
+%{_libdir}/libtextautogeneratellamacpp.so*
+%{_libdir}/libtextautogeneratelmstudio.so*
+%{_libdir}/libtextautogenerateplugincommon.so*
+%{_libdir}/libmcpprotocolclientplugin.so*
+%{_libdir}/libmcpprotocolserverplugin.so*
 %dir %{_qtdir}/plugins/kf6/textautogeneratetext
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_genericnetwork.so
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollama.so
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollamacloud.so
 %{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_ollamaonline.so
+%{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_llamacpp.so
+%{_qtdir}/plugins/kf6/textautogeneratetext/autogeneratetext_lmstudio.so
+%dir %{_qtdir}/plugins/kf6/textautogeneratetext/mcpprotocol
+%{_qtdir}/plugins/kf6/textautogeneratetext/mcpprotocol/autogeneratetext_mcpprotocolclientplugin.so
+%{_qtdir}/plugins/kf6/textautogeneratetext/mcpprotocol/autogeneratetext_mcpprotocolserverplugin.so
 %dir %{_qtdir}/plugins/autogeneratetext
 %dir %{_qtdir}/plugins/autogeneratetext/toolplugins
 %{_qtdir}/plugins/autogeneratetext/toolplugins/textautogeneratetext_exampletoolplugin.so
 %{_libdir}/libtextutils-cmark-rc-copy.so*
+%{_datadir}/config.kcfg/textautogeneratetextglobalconfig.kcfg
 
 %files -n %{devtextautogeneratetext}
 %{_libdir}/libKF6TextAutoGenerateText.so
@@ -508,3 +569,21 @@ Development files for the KDE speech-to-text library
 %{_libdir}/libKF6TextEditTextToSpeech.so
 %{_libdir}/cmake/KF6TextSpeechToText
 %{_includedir}/KF6/TextSpeechToText
+
+%files -n %{libtextautogeneratetextmcpprotocolcore} -f libtextautogeneratetextmcpprotocol.lang
+%{_libdir}/libKF6TextAutoGenerateTextMcpProtocolCore.so.%{major}*
+%{_libdir}/libKF6TextAutoGenerateTextMcpProtocolCore.so.%{version}
+
+%files -n %{devtextautogeneratetextmcpprotocolcore}
+%{_libdir}/libKF6TextAutoGenerateTextMcpProtocolCore.so
+%{_libdir}/cmake/KF6TextAutoGenerateTextMcpProtocolCore
+%{_includedir}/KF6/TextAutoGenerateTextMcpProtocolCore
+
+%files -n %{libtextautogeneratetextmcpprotocolwidgets}
+%{_libdir}/libKF6TextAutoGenerateTextMcpProtocolWidgets.so.%{major}*
+%{_libdir}/libKF6TextAutoGenerateTextMcpProtocolWidgets.so.%{version}
+
+%files -n %{devtextautogeneratetextmcpprotocolwidgets}
+%{_libdir}/libKF6TextAutoGenerateTextMcpProtocolWidgets.so
+%{_libdir}/cmake/KF6TextAutoGenerateTextMcpProtocolWidgets
+%{_includedir}/KF6/TextAutoGenerateTextMcpProtocolWidgets
