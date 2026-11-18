@@ -569,9 +569,10 @@ Development files for the KDE MCP protocol widgets
 %{_libdir}/libKF6TextSpeechToText.so.%{version}
 %{_libdir}/libspeechtotextwhisperinstall.so.%{major}*
 %{_libdir}/libspeechtotextwhisperinstall.so.%{version}
+%{_libdir}/libspeechtotextwhisper.so.%{major}*
+%{_libdir}/libspeechtotextwhisper.so.%{version}
 %{_bindir}/whisper_helper.py
 %dir %{_qtdir}/plugins/kf6/speechtotext
-%{_qtdir}/plugins/kf6/speechtotext/speechtotext_google.so
 %{_qtdir}/plugins/kf6/speechtotext/speechtotext_whisper.so
 
 %files -n %{devtextspeechtotext}
