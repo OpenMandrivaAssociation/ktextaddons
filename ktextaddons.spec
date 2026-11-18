@@ -60,7 +60,7 @@
 %define devtextautogeneratetextmcpprotocolwidgets %{mklibname -d KF6TextAutoGenerateTextMcpProtocolWidgets}
 
 Name:		ktextaddons
-Version:	2.1.2
+Version:	2.3.0
 Release:	1
 #Source0:	http://download.kde.org/%{stable}/ktextaddons/%{name}-%{version}.tar.xz
 Source0:	https://invent.kde.org/libraries/ktextaddons/-/archive/v%{version}/ktextaddons-v%{version}.tar.bz2
@@ -82,6 +82,7 @@ BuildRequires:	cmake(Qt6Test)
 BuildRequires:	cmake(Qt6Keychain)
 # Optional/feature components
 BuildRequires:	cmake(Qt6TextToSpeech)
+BuildRequires:	cmake(Qt6Multimedia)
 BuildRequires:	cmake(Qt6MultimediaWidgets)
 BuildRequires:	cmake(Qt6Designer)
 BuildRequires:	cmake(Qt6UiPlugin)
@@ -451,6 +452,14 @@ Development files for the KDE MCP protocol widgets
 
 %files -n %{libtextedittexttospeech} -f libtextedittexttospeech.lang
 %{_libdir}/libKF6TextEditTextToSpeech.so.%{major}*
+%{_libdir}/libKF6TextEditTextToSpeech.so.%{version}
+%{_libdir}/libkokorotexttospeech.so.%{major}*
+%{_libdir}/libkokorotexttospeech.so.%{version}
+%{_libdir}/libkokoroinstalltexttospeech.so.%{major}*
+%{_libdir}/libkokoroinstalltexttospeech.so.%{version}
+%dir %{_qtdir}/plugins/texttospeech
+%{_qtdir}/plugins/texttospeech/KokoroTextToSpeechPlugin.so
+%{_bindir}/kokoro_helper.py
 
 %files -n %{devtextedittexttospeech}
 %{_libdir}/libKF6TextEditTextToSpeech.so
@@ -558,15 +567,15 @@ Development files for the KDE MCP protocol widgets
 %files -n %{libtextspeechtotext} -f libtextspeechtotext.lang
 %{_libdir}/libKF6TextSpeechToText.so.%{major}*
 %{_libdir}/libKF6TextSpeechToText.so.%{version}
-%{_libdir}/libKF6TextEditTextToSpeech.so.%{major}*
-%{_libdir}/libKF6TextEditTextToSpeech.so.%{version}
+%{_libdir}/libspeechtotextwhisperinstall.so.%{major}*
+%{_libdir}/libspeechtotextwhisperinstall.so.%{version}
+%{_bindir}/whisper_helper.py
 %dir %{_qtdir}/plugins/kf6/speechtotext
 %{_qtdir}/plugins/kf6/speechtotext/speechtotext_google.so
 %{_qtdir}/plugins/kf6/speechtotext/speechtotext_whisper.so
 
 %files -n %{devtextspeechtotext}
 %{_libdir}/libKF6TextSpeechToText.so
-%{_libdir}/libKF6TextEditTextToSpeech.so
 %{_libdir}/cmake/KF6TextSpeechToText
 %{_includedir}/KF6/TextSpeechToText
 
